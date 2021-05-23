@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "14cf2e96-b151-4036-bf15-1432c0ef3806",
+		"name": "VendingMachine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "initialize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n       {\r\n        \"denomination\": \"20\",\r\n        \"quantity\": \"2\"\r\n       },\r\n        {\r\n        \"denomination\": \"10\",\r\n        \"quantity\": \"1\"\r\n       }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/vendingmachine/public/v1/initialize",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"vendingmachine",
+						"public",
+						"v1",
+						"initialize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dispense",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n       {\r\n        \"denomination\": \"2\",\r\n        \"quantity\": \"1\"\r\n       },\r\n        {\r\n        \"denomination\": \"2\",\r\n        \"quantity\": \"1\"\r\n       }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/vendingmachine/public/v1/dispense",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"vendingmachine",
+						"public",
+						"v1",
+						"dispense"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n       {\r\n        \"denomination\": \"20\",\r\n        \"quantity\": \"2\"\r\n       },\r\n        {\r\n        \"denomination\": \"10\",\r\n        \"quantity\": \"1\"\r\n       }\r\n]\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/vendingmachine/public/v1/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"vendingmachine",
+						"public",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
