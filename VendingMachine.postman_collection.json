@@ -44,8 +44,11 @@
 		},
 		{
 			"name": "dispense",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -55,7 +58,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " [\r\n       {\r\n        \"denomination\": \"2\",\r\n        \"quantity\": \"1\"\r\n       },\r\n        {\r\n        \"denomination\": \"2\",\r\n        \"quantity\": \"1\"\r\n       }\r\n]\r\n",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,7 +66,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9090/vendingmachine/public/v1/dispense",
+					"raw": "http://localhost:9090/vendingmachine/public/v1/dispense?amountToDispense=30",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -74,6 +77,12 @@
 						"public",
 						"v1",
 						"dispense"
+					],
+					"query": [
+						{
+							"key": "amountToDispense",
+							"value": "30"
+						}
 					]
 				}
 			},
