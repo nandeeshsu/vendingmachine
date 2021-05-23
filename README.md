@@ -10,7 +10,9 @@
 ./gradlew clean build
 
 ### How to run this project using CLI
-java -jar build/libs/vendingmachine-0.0.1-SNAPSHOT.jar
+* java -jar build/libs/vendingmachine-0.0.1-SNAPSHOT.jar
+* Postman collection VendingMachine.postman_collection.json in the root folder can be used to test the REST API
+
 
 ###This component provides APIs which:
 *	Initialise the vending machine to a known state, for use when the machine is set up. This should include setting the initial float (the coins placed in the machine for customer change) which should be accepted as a parameter
