@@ -1,6 +1,6 @@
 package com.example.vendingmachine.context;
 
-import com.example.vendingmachine.adapter.CoinInventory;
+import com.example.vendingmachine.coin.CoinInventory;
 import com.example.vendingmachine.state.Initialised;
 import com.example.vendingmachine.state.InitialisedEmpty;
 import com.example.vendingmachine.state.Uninitialised;

@@ -154,7 +154,7 @@ Interactive test-harness used to play with the code
 
     > Task :VendingMachineCLIApplication.main()
     15:53:53.199 [main] ERROR com.example.vendingmachine.VendingMachineCLIApplication - No console
-    15:53:53.203 [main] INFO com.example.vendingmachine.adapter.CoinInventory - Coins empty
+    15:53:53.203 [main] INFO com.example.vendingmachine.coin.CoinInventory - Coins empty
     
     
     >> Select an option <<
@@ -172,7 +172,7 @@ Interactive test-harness used to play with the code
     >> Enter coin denomination as integer (or X to continue):
     x
     15:54:38.992 [main] INFO com.example.vendingmachine.state.Uninitialised - Switching to INITIALISED-EMPTY state
-    15:54:38.992 [main] INFO com.example.vendingmachine.adapter.CoinInventory - Coins loaded
+    15:54:38.992 [main] INFO com.example.vendingmachine.coin.CoinInventory - Coins loaded
     15:54:38.993 [main] INFO com.example.vendingmachine.context.VendingMachineMachineContext - Switching to INITIALISED
     
     

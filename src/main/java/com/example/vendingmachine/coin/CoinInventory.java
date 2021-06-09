@@ -1,4 +1,4 @@
-package com.example.vendingmachine.adapter;
+package com.example.vendingmachine.coin;
 
 import com.example.vendingmachine.context.VendingMachineMachineContext;
 import org.slf4j.Logger;
