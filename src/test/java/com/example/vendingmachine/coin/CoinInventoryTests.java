@@ -20,7 +20,7 @@ class CoinInventoryTests {
 
         CoinInventory coin =new CoinInventory(coinStore);
         List<Integer> change =  coin.removeCoins(26);
-        assertEquals(change.size(),0);
+        assertEquals(0, change.size());
         assertThat(change, IsEmptyCollection.empty());
     }
 
