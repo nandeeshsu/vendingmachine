@@ -22,7 +22,7 @@
 ###Assumptions
 * Coins denomination, and the number of coins is integer
 * Coins are dispensed only if they are available.
-* Junits are not written
+* More Junits to be added
 
 ###Design Decisions
 * Considered any denomination value. As an improvement it would be nice to keep it as enum of predefined denominations as they wouldn't change
