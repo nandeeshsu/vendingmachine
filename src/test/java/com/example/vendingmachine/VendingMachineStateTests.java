@@ -19,10 +19,14 @@ class VendingMachineStateTests {
 
     @Test
     void shouldStartStateIsUninitialisedState() {
-        VendingMachineMachine vm = new VendingMachineMachineContext();
+        VendingMachineMachineContext vm = new VendingMachineMachineContext();
 
         //Started with uninitialised state
         assertThat(vm.getVendingMachineState(), instanceOf(Uninitialised.class));
+        assertTrue(vm.getVendingMachineState().dispenseCoins(5).isEmpty());
+        vm.getVendingMachineState().uninitialise();
+
+        assertThat(vm.getInitialisedState(), instanceOf(Initialised.class));
     }
 
     @Test
@@ -97,8 +101,28 @@ class VendingMachineStateTests {
 
         vm.dispenseCoins(1000);
         assertThat(vm.getVendingMachineState(), instanceOf(InitialisedEmpty.class));
-
         vm.registerCoins(coinsToAdd);
         assertThat(vm.getVendingMachineState(), instanceOf(Initialised.class));
+    }
+
+    @Test
+    void switchesToEmptyStateWhenCoinIsEmptyThenBackToInitialisedWhenToppedUpAndToUninitialisedState() {
+        VendingMachineMachine vm = new VendingMachineMachineContext();
+
+        Map<Integer,Integer> coinsToAdd = new HashMap<>();
+        coinsToAdd.put(1,1000);
+
+        vm.initialiseWithCoin(coinsToAdd);
+        assertThat(vm.getVendingMachineState(), instanceOf(Initialised.class));
+
+        vm.dispenseCoins(1000);
+        assertThat(vm.getVendingMachineState(), instanceOf(InitialisedEmpty.class));
+        vm.getVendingMachineState().initialise();
+        vm.getVendingMachineState().initialiseWithCoin(null);
+
+
+        assertTrue( vm.getVendingMachineState().dispenseCoins(10).isEmpty() );
+        vm.getVendingMachineState().uninitialise();
+        assertThat(vm.getVendingMachineState(), instanceOf(Uninitialised.class));
     }
 }
