@@ -13,7 +13,8 @@ import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class VendingMachineStateTests {
 
@@ -44,11 +45,11 @@ class VendingMachineStateTests {
     void canBeInitialisedWithCoin() {
         VendingMachineMachine vm = new VendingMachineMachineContext();
 
-        Map<Integer,Integer> coinsToAdd = new HashMap<>();
-        coinsToAdd.put(1,1000);
-        coinsToAdd.put(2,1000);
-        coinsToAdd.put(5,1000);
-        coinsToAdd.put(10,1000);
+        Map<Integer, Integer> coinsToAdd = new HashMap<>();
+        coinsToAdd.put(1, 1000);
+        coinsToAdd.put(2, 1000);
+        coinsToAdd.put(5, 1000);
+        coinsToAdd.put(10, 1000);
 
         //Should in an uninitialised state, now initialise
         vm.initialiseWithCoin(coinsToAdd);
@@ -59,28 +60,28 @@ class VendingMachineStateTests {
     void canDispenseCoinsWhenInitialised() {
         VendingMachineMachine vm = new VendingMachineMachineContext();
 
-        Map<Integer,Integer> coinsToAdd = new HashMap<>();
-        coinsToAdd.put(1,1000);
-        coinsToAdd.put(2,1000);
-        coinsToAdd.put(5,1000);
-        coinsToAdd.put(10,1000);
+        Map<Integer, Integer> coinsToAdd = new HashMap<>();
+        coinsToAdd.put(1, 1000);
+        coinsToAdd.put(2, 1000);
+        coinsToAdd.put(5, 1000);
+        coinsToAdd.put(10, 1000);
 
         //Should be in an uninitialised state, now initialise and set float
         vm.initialiseWithCoin(coinsToAdd);
         assertThat(vm.getVendingMachineState(), instanceOf(Initialised.class));
         List<Integer> dc = vm.dispenseCoins(100);
-        assertEquals(10,dc.size());
+        assertEquals(10, dc.size());
     }
 
     @Test
     void canBeUninitialisedWithCoinAndWontDispense() {
         VendingMachineMachine vm = new VendingMachineMachineContext();
 
-        Map<Integer,Integer> coinsToAdd = new HashMap<>();
-        coinsToAdd.put(1,1000);
-        coinsToAdd.put(2,1000);
-        coinsToAdd.put(5,1000);
-        coinsToAdd.put(10,1000);
+        Map<Integer, Integer> coinsToAdd = new HashMap<>();
+        coinsToAdd.put(1, 1000);
+        coinsToAdd.put(2, 1000);
+        coinsToAdd.put(5, 1000);
+        coinsToAdd.put(10, 1000);
 
         //Should be in an uninitialised state, now initialise and set coin
         vm.initialiseWithCoin(coinsToAdd);
@@ -93,8 +94,8 @@ class VendingMachineStateTests {
     void switchesToEmptyStateWhenCoinIsEmptyThenBackToInitialisedWhenToppedUp() {
         VendingMachineMachine vm = new VendingMachineMachineContext();
 
-        Map<Integer,Integer> coinsToAdd = new HashMap<>();
-        coinsToAdd.put(1,1000);
+        Map<Integer, Integer> coinsToAdd = new HashMap<>();
+        coinsToAdd.put(1, 1000);
 
         vm.initialiseWithCoin(coinsToAdd);
         assertThat(vm.getVendingMachineState(), instanceOf(Initialised.class));
@@ -109,8 +110,8 @@ class VendingMachineStateTests {
     void switchesToEmptyStateWhenCoinIsEmptyThenBackToInitialisedWhenToppedUpAndToUninitialisedState() {
         VendingMachineMachine vm = new VendingMachineMachineContext();
 
-        Map<Integer,Integer> coinsToAdd = new HashMap<>();
-        coinsToAdd.put(1,1000);
+        Map<Integer, Integer> coinsToAdd = new HashMap<>();
+        coinsToAdd.put(1, 1000);
 
         vm.initialiseWithCoin(coinsToAdd);
         assertThat(vm.getVendingMachineState(), instanceOf(Initialised.class));
@@ -121,7 +122,7 @@ class VendingMachineStateTests {
         vm.getVendingMachineState().initialiseWithCoin(null);
 
 
-        assertTrue( vm.getVendingMachineState().dispenseCoins(10).isEmpty() );
+        assertTrue(vm.getVendingMachineState().dispenseCoins(10).isEmpty());
         vm.getVendingMachineState().uninitialise();
         assertThat(vm.getVendingMachineState(), instanceOf(Uninitialised.class));
     }
