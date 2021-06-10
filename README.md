@@ -205,3 +205,7 @@ Interactive test-harness used to play with the code
     2:      Register coins that have been deposited by a user
     3:      Produce a collection of coins that sum to a particular value
     9:      Exit
+
+Jacoco Coverage Report
+
+![image](https://user-images.githubusercontent.com/11089514/121451313-46cbbf00-c995-11eb-8032-222823fc4ca3.png)
