@@ -8,8 +8,12 @@ import java.util.Map;
  */
 public interface VendingMachineState {
     String getStatus();
+
     List<Integer> dispenseCoins(int value);
+
     void uninitialise();
+
     void initialise();
+
     void initialiseWithCoin(Map<Integer, Integer> coinsToAdd);
 }

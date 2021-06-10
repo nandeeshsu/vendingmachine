@@ -22,9 +22,8 @@ public class VendingMachineMachineContext implements VendingMachineMachine {
     private final VendingMachineState initialisedState;
     private final VendingMachineState uninitialisedState;
     private final VendingMachineState initialisedEmptyState;
-    private VendingMachineState vendingMachineState;
-
     private final CoinInventory coinInventory;
+    private VendingMachineState vendingMachineState;
 
     public VendingMachineMachineContext() {
         this.initialisedState = new Initialised(this);

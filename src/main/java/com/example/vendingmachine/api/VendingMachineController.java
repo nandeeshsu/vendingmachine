@@ -38,7 +38,7 @@ public class VendingMachineController {
      * This should include setting the initial float (the coins placed in the machine for customer change) which should be accepted as a parameter
      */
     @PostMapping(value = "/initialize", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public VendingMachineStatus initialiseVendingMachine(@Valid @RequestBody(required = true) List<Coin> coins){
+    public VendingMachineStatus initialiseVendingMachine(@Valid @RequestBody(required = true) List<Coin> coins) {
         var vendingMachineStatus = new VendingMachineStatus();
 
         //Initialise the coin if the state is Uninitialised
@@ -60,8 +60,8 @@ public class VendingMachineController {
      * Register coins that have been deposited by a user
      */
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public VendingMachineStatus registerCoinsDepositedByAUser(@RequestBody(required = true) @NonNull List<Coin> coins){
-        if (vendingMachine.getStatus().equals(Uninitialised.STATUS)){
+    public VendingMachineStatus registerCoinsDepositedByAUser(@RequestBody(required = true) @NonNull List<Coin> coins) {
+        if (vendingMachine.getStatus().equals(Uninitialised.STATUS)) {
             throw new VendingMachingException("Cannot register, initialize the vending machine before registering", ServiceErrorCode.BAD_REQUEST);
         }
         vendingMachine.registerCoins(coins.stream().collect(Collectors.toMap(Coin::getDenomination, Coin::getQuantity, Integer::sum)));
@@ -76,14 +76,14 @@ public class VendingMachineController {
      * and remove the coins from the machine
      */
     @GetMapping("/dispense")
-    public List<Integer> dispenseCoin(@RequestParam(required = true) @Min(1) @Max(Integer.MAX_VALUE) Integer amountToDispense){
-        if (vendingMachine.getStatus().equals(Uninitialised.STATUS) || vendingMachine.getCoinInventory().getCoinStore().isEmpty()){
+    public List<Integer> dispenseCoin(@RequestParam(required = true) @Min(1) @Max(Integer.MAX_VALUE) Integer amountToDispense) {
+        if (vendingMachine.getStatus().equals(Uninitialised.STATUS) || vendingMachine.getCoinInventory().getCoinStore().isEmpty()) {
             throw new VendingMachingException("No coins to dispense", ServiceErrorCode.BAD_REQUEST);
         }
 
         List<Integer> dispensedCoins = vendingMachine.dispenseCoins(amountToDispense);
 
-        if(dispensedCoins.isEmpty()){
+        if (dispensedCoins.isEmpty()) {
             throw new VendingMachingException("Cannot dispense coin, try different value", ServiceErrorCode.BAD_REQUEST);
         }
         return dispensedCoins;

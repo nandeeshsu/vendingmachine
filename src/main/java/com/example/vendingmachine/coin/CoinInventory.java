@@ -75,7 +75,7 @@ public class CoinInventory {
      * @return
      */
     public List<Integer> removeCoins(int valueToRemove) {
-        List<Integer> coins=null;
+        List<Integer> coins = null;
         if (valueToRemove > 0) {
             coins = getCoinList(valueToRemove);
             boolean state = coinStore.isEmpty();
@@ -88,7 +88,7 @@ public class CoinInventory {
             if (state != coinStore.isEmpty())
                 broadcastStateChange();
         }
-        return coins!=null?coins:new ArrayList<>();
+        return coins != null ? coins : new ArrayList<>();
     }
 
     /**
@@ -146,9 +146,9 @@ public class CoinInventory {
 
             targetValue = createCoinList(targetValue, coinDenominations, coinQuantity, listOfCoins, counter);
             if (targetValue > 0 && pushedToList > 0) {
-                    targetValue += pushedToList;
-                    listOfCoins.remove(listOfCoins.size() - 1);
-                    pushedToList = 0;
+                targetValue += pushedToList;
+                listOfCoins.remove(listOfCoins.size() - 1);
+                pushedToList = 0;
             }
         }
         return targetValue;

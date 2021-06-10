@@ -9,5 +9,6 @@ import java.util.Map;
  */
 public interface VendingMachineMachine extends VendingMachineState {
     VendingMachineState getVendingMachineState();
+
     void registerCoins(Map<Integer, Integer> coinsToAdd);
 }

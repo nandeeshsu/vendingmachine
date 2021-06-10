@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Initialised implements VendingMachineState {
 
-    public static final  String STATUS = "INITIALISED";
+    public static final String STATUS = "INITIALISED";
     private static final Logger logger = LoggerFactory.getLogger(Initialised.class);
     private final VendingMachineMachineContext vendingMachine;
 

@@ -1,63 +1,23 @@
 package com.example.vendingmachine.model;
 
-import java.util.Objects;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * REST API ServiceErrorResponse
  */
 
-public class ServiceErrorResponse  implements Serializable {
+public class ServiceErrorResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("message")
     private String message;
-
-    /**
-     * Service Code:
-     * * `001` - Internal Service Error
-     * * `002` - Bad Request
-     */
-    public enum ServiceCodeEnum {
-        CODE001("001"),
-
-        CODE002("002");
-
-        private String value;
-
-        ServiceCodeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ServiceCodeEnum fromValue(String value) {
-            for (ServiceCodeEnum b : ServiceCodeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-    }
-
     @JsonProperty("serviceCode")
     private ServiceCodeEnum serviceCode;
-
     @JsonProperty("timestamp")
     private String timestamp;
 
@@ -68,6 +28,7 @@ public class ServiceErrorResponse  implements Serializable {
 
     /**
      * Get message
+     *
      * @return message
      */
 
@@ -88,6 +49,7 @@ public class ServiceErrorResponse  implements Serializable {
      * Service Code:
      * * `001` - Internal Service Error
      * * `002` - Bad Request
+     *
      * @return serviceCode
      */
 
@@ -106,6 +68,7 @@ public class ServiceErrorResponse  implements Serializable {
 
     /**
      * Get timestamp
+     *
      * @return timestamp
      */
     public String getTimestamp() {
@@ -115,7 +78,6 @@ public class ServiceErrorResponse  implements Serializable {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
-
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -156,6 +118,43 @@ public class ServiceErrorResponse  implements Serializable {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Service Code:
+     * * `001` - Internal Service Error
+     * * `002` - Bad Request
+     */
+    public enum ServiceCodeEnum {
+        CODE001("001"),
+
+        CODE002("002");
+
+        private final String value;
+
+        ServiceCodeEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonCreator
+        public static ServiceCodeEnum fromValue(String value) {
+            for (ServiceCodeEnum b : ServiceCodeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
 

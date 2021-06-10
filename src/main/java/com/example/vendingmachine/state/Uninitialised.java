@@ -11,8 +11,8 @@ import java.util.Map;
 public class Uninitialised implements VendingMachineState {
 
     public static final String STATUS = "UNINITIALISED";
-    private static final Logger logger = LoggerFactory.getLogger(Uninitialised.class);
     public static final String STATE = " state";
+    private static final Logger logger = LoggerFactory.getLogger(Uninitialised.class);
     private final VendingMachineMachineContext vendingMachine;
 
     public Uninitialised(VendingMachineMachineContext vendingMachine) {
@@ -26,7 +26,7 @@ public class Uninitialised implements VendingMachineState {
         } else {
             vendingMachine.setVendingMachineState(vendingMachine.getInitialisedState());
         }
-        logger.info("Switching to {}" , vendingMachine.getStatus() + STATE);
+        logger.info("Switching to {}", vendingMachine.getStatus() + STATE);
     }
 
     @Override

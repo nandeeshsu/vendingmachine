@@ -8,11 +8,12 @@ public enum Denomination {
     TWENTY_PENCE(20),
     FIFTY_PENCE(50),
     ONE_POUND(1),
-    TWO_POUND(2),;
+    TWO_POUND(2),
+    ;
 
     private final Integer value;
 
-    private Denomination(Integer value) {
+    Denomination(Integer value) {
         this.value = value;
     }
 
